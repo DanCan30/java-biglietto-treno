@@ -17,7 +17,13 @@ public class CalcolaBiglietto {
 		
 		System.out.print("How long will be the trip? ");
 		int tripDistance = sc.nextInt();
-		System.out.println("You selected a distance of " + tripDistance + "km");
+		if(tripDistance <= 0) {
+			System.out.println("Please insert a valid value for the trip.");
+			sc.close();
+			return;
+		} else {
+			System.out.println("You selected a distance of " + tripDistance + "km");
+		}
 		
 		sc.close();
 		
@@ -36,13 +42,18 @@ public class CalcolaBiglietto {
 		
 		double totalTripPrice = 0.00;
 		
-		for(int i = 0; i <= tripDistance; i++) {
-			double costIncrement = i * 0.01;
-			 double incrementedPricePerKm = finalPricePerKm + costIncrement;
+		for(int i = 1; i <= tripDistance; i++) {
+			
+			double costIncrement = (i - 1) * 0.01;
+			
+			if(i == 1) {
+				costIncrement = 0;
+			}
+			
+			double incrementedPricePerKm = finalPricePerKm + costIncrement;
 			totalTripPrice = totalTripPrice + incrementedPricePerKm;
+			System.out.println(totalTripPrice);
 		}
-		
-		
 		
 		System.out.printf("The final cost is: %.02f €", totalTripPrice);
 	}
