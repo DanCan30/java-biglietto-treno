@@ -21,26 +21,29 @@ public class CalcolaBiglietto {
 		
 		sc.close();
 		
-		double finalPricePerKm = 0.0;
-		
-		for(int i = 0; i <= tripDistance; i++) {
-			double costIncrement = i * 0.01;
-			finalPricePerKm = initialPricePerKm + costIncrement;
-			System.out.println(finalPricePerKm);
-		}
-		
-		double totalTripPrice = tripDistance * finalPricePerKm;
+		double finalPricePerKm = initialPricePerKm;
 		
 		if (userAge < 12) {
 			System.out.println("Under 12 customers travel free!");
 			return;
 		} else if (userAge < 18) {
 			
-			totalTripPrice = totalTripPrice - (totalTripPrice * under18Discount / 100.0);
+			finalPricePerKm = finalPricePerKm - (finalPricePerKm * under18Discount / 100.0);
 		} else if (userAge > 65) {
 			
-			totalTripPrice = totalTripPrice - (totalTripPrice * over65Discount / 100.0);
+			finalPricePerKm = finalPricePerKm - (finalPricePerKm * over65Discount / 100.0);
 		}
+		
+		double totalTripPrice = 0.00;
+		
+		for(int i = 0; i <= tripDistance; i++) {
+			double costIncrement = i * 0.01;
+			 double incrementedPricePerKm = finalPricePerKm + costIncrement;
+			System.out.println(incrementedPricePerKm);
+			totalTripPrice = totalTripPrice + incrementedPricePerKm;
+		}
+		
+		
 		
 		System.out.printf("The final cost is: %.02f €", totalTripPrice);
 	}
