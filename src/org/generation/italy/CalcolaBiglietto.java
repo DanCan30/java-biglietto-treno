@@ -39,7 +39,6 @@ public class CalcolaBiglietto {
 		for(int i = 0; i <= tripDistance; i++) {
 			double costIncrement = i * 0.01;
 			 double incrementedPricePerKm = finalPricePerKm + costIncrement;
-			System.out.println(incrementedPricePerKm);
 			totalTripPrice = totalTripPrice + incrementedPricePerKm;
 		}
 		
