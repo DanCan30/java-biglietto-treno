@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class CalcolaBiglietto {
 	public static void main(String[] args) {
 		
-		double pricePerKm = 0.21;
+		double initialPricePerKm = 0.21;
 		byte under18Discount = 20;
 		byte over65Discount = 40;
 		
@@ -21,7 +21,15 @@ public class CalcolaBiglietto {
 		
 		sc.close();
 		
-		double totalTripPrice = tripDistance * pricePerKm;
+		double finalPricePerKm = 0.0;
+		
+		for(int i = 0; i <= tripDistance; i++) {
+			double costIncrement = i * 0.01;
+			finalPricePerKm = initialPricePerKm + costIncrement;
+			System.out.println(finalPricePerKm);
+		}
+		
+		double totalTripPrice = tripDistance * finalPricePerKm;
 		
 		if (userAge < 12) {
 			System.out.println("Under 12 customers travel free!");
@@ -33,7 +41,6 @@ public class CalcolaBiglietto {
 			
 			totalTripPrice = totalTripPrice - (totalTripPrice * over65Discount / 100.0);
 		}
-		
 		
 		System.out.printf("The final cost is: %.02f €", totalTripPrice);
 	}
