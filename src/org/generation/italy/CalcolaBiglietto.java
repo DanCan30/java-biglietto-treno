@@ -52,7 +52,6 @@ public class CalcolaBiglietto {
 			
 			double incrementedPricePerKm = finalPricePerKm + costIncrement;
 			totalTripPrice = totalTripPrice + incrementedPricePerKm;
-			System.out.println(totalTripPrice);
 		}
 		
 		System.out.printf("The final cost is: %.02f €", totalTripPrice);
